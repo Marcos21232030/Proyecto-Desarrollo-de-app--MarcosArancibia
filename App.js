@@ -1,28 +1,31 @@
-import { StyleSheet, View} from 'react-native'; 
-import Home from './Screens/Home';
-import ItemListCategories from './Screens/ItemListCategories';
-import { useState } from 'react';
+import {StatusBar } from 'react-native-web';
+import { color } from './Global/colors';
+import { useFonts } from "expo-font"
+import Navigator from './Navigation/Navigator';
+
+
+
+
+
 const App = () => {
-  const [categorySelected,setCategorySelected] = useState("")
+
+
+  const [fontLoaded] = useFonts({
+    Cinzel: require("./assets/Fonts/Cinzel/static/Cinzel-SemiBold.ttf"),
+    Raleway: require("./assets/Fonts/Raleway/Raleway-Italic-VariableFont_wght.ttf")
+  })
+
+  if (!fontLoaded) return null
 
   return (
-    <View style={styles.container}>
-      {categorySelected ?
-      <ItemListCategories category = {categorySelected} />  
-      : 
-      <Home setCategorySelected={setCategorySelected} />
-    }
-    </View>
+    <>
+      <StatusBar
+        backgroundColor={color.carbon}
+      />
+      <Navigator/>
+    </>
   );
 };
 
 export default App;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'start',
-  },
-});

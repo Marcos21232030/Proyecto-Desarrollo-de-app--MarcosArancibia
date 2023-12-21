@@ -1,27 +1,49 @@
-import { StyleSheet, Text} from 'react-native'
-import { LinearGradient } from 'expo-linear-gradient';
+import { StyleSheet, Text, View ,useWindowDimensions } from 'react-native'
+import { useEffect, useState } from 'react'
+import { color } from '../Global/colors'
 
 
-const Header = ({ title = "Producto" }) => {
+const Header = ({title = "Producto"}) => {
+  const {width,height} = useWindowDimensions()
+  const [landscape , setLandscape] = useState(false)
+
+  useEffect(()=>{
+    if(width > height){
+      setLandscape(true)
+    }else{
+      setLandscape(false)
+    }
+  },[width,height])
+
 
   return (
-    <LinearGradient style={styles.container} colors={['rgba(0,0,0,0.8)', 'transparent']}>
+    <View style={landscape ? styles.containerLandscape : styles.container}>
       <Text style={styles.text}>{title}</Text>
-    </LinearGradient >
+    </View>
   )
 }
 
 export default Header
 
 const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    height: 80,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  text: {
-    fontSize: 30,
-    fontWeight: 10,
-  },
+    container:{
+      backgroundColor:color.carbon,
+        width:"100%",
+        height:100,
+        justifyContent:"center",
+        alignItems:"center"
+    },
+    containerLandscape:{
+      backgroundColor:color.carbon,
+      width:"100%",
+      height:70,
+      justifyContent:"center",
+      alignItems:"center"
+    },
+    text:{
+        fontSize:20,
+        color: color.negro,
+        margin: 20,
+        fontFamily: "Cinzel"
+    }
 })

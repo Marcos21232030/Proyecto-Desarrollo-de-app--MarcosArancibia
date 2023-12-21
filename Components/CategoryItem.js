@@ -3,9 +3,9 @@ import { color } from '../Global/colors'
 import CardShadow from '../Wrappers/cardShadow'
 
 
-const CategoryItem = ({category, setCategorySelected}) => {
+const CategoryItem = ({category, navigation, route}) => {
   return (
-    <Pressable onPress={()=>setCategorySelected(category)}>
+    <Pressable onPress={()=>navigation.navigate("ItemListCategories", {category})}>
       <CardShadow style={styles.container}>
         <Text style={styles.text}>{category}</Text>
       </CardShadow>

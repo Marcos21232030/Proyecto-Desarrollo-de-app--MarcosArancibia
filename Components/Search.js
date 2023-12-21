@@ -48,7 +48,7 @@ export default Search;
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: color.grisclaro,
+        backgroundColor: color.grisclaroo,
         width:"100%"
     },
     containerInput: {

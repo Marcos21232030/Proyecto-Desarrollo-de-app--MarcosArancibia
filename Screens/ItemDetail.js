@@ -1,61 +1,40 @@
 import { StyleSheet, Text, View, Image, Pressable, useWindowDimensions  } from 'react-native';
-import Header from '../Components/Header';
-import allProduct from '../Data/products.json';
 import { useEffect, useState } from 'react';
 import { color } from '../Global/colors';
+import { useSelector } from 'react-redux'
+
 
 const ItemDetail = ({route}) => {
-    const {id} = route.params
 
-    const [product, setProduct] = useState({})
-
-    const { width, height } = useWindowDimensions()
-    const [landscape, setLandscape] = useState(false)
-
-    useEffect(() => {
-        if (width > height) {
-            setLandscape(true)
-        } else {
-            setLandscape(false)
-        }
-    }, [width, height])
-
-    useEffect(() => {
-
-        const productFinded = allProduct.find(product => product.id === id )
-        setProduct(productFinded)
-
-    }, [id])
-
-
-
-
+    const product = useSelector((state)=> state.shop.value.productSelected)
+    const images = product.images ? product.images : []
+  
+  
+  
     return (
-        <View style={styles.container}>
-            <View style={landscape ? styles.contentLandscape : styles.content} >
-                <Image
-                    style={landscape ? styles.imageLandscape : styles.image}
-                    source={{ uri: product.thumbnail }}
-                    resizeMode='cover'
-                />
-                <View style={landscape ? styles.containerTextLandscape : styles.containerText}>
-                    <Text style={styles.tile}>{product.title}</Text>
-                    <Text style={styles.description}>{product.description}</Text>
-                </View>
-                <View style={landscape ? styles.containerPriceLandscape : styles.containerPrice}>
-                    <Text style={styles.price}> $ {product.price}</Text>
-                    <Pressable style={styles.buyNow}>
-                        <Text style={styles.buyNowText}>
-                            Comprar
-                        </Text>
-                    </Pressable>
-                </View>
+      <View style={styles.container}>
+        <View style={styles.content} >
+            <Image
+              style={styles.image}
+              source={{uri:images[2]}}
+              resizeMode='cover's
+            />
+            <View style={styles.containerText}>
+              <Text style={styles.title}>{product.title}</Text>
+              <Text>{product.description}</Text>
             </View>
-        </View>
-    );
-};
-
-export default ItemDetail;
+            <View style={styles.containerPrice}>
+              <Text style={styles.price}>$ {product.price}</Text>
+              <Pressable style={styles.buyNow}>
+                <Text style={styles.buyNowText}>Buy Now</Text>
+              </Pressable>
+            </View>
+          </View>
+      </View>
+    )
+  }
+  
+  export default ItemDetail
 
 const styles = StyleSheet.create({
     container: {
@@ -125,7 +104,7 @@ const styles = StyleSheet.create({
         color: "white",
         fontSize: 15
     },
-    tile: {
+    title: {
         justifyContent: 'center',
         alignItems: 'center',
         textAlign: 'center',

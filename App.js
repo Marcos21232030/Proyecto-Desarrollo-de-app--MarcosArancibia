@@ -1,7 +1,9 @@
-import {StatusBar } from 'react-native-web';
+import { StatusBar } from 'react-native-web';
 import { color } from './Global/colors';
 import { useFonts } from "expo-font"
-import Navigator from './Navigation/Navigator';
+import TabNavigator from './Navigation/TabNavigator';
+import { Provider } from 'react-redux'
+import { store } from './App/store';
 
 
 
@@ -19,13 +21,14 @@ const App = () => {
 
   return (
     <>
-      <StatusBar
-        backgroundColor={color.carbon}
-      />
-      <Navigator/>
+      <StatusBar backgroundColor={color.carbon} />
+      <Provider store={store}>
+        <TabNavigator />
+      </Provider>
+
     </>
-  );
-};
+  )
+}
 
 export default App;
 

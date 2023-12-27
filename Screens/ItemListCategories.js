@@ -1,42 +1,32 @@
-import { Pressable, StyleSheet } from 'react-native'
-import React, { useEffect } from 'react'
-import Header from '../Components/Header'
+import { FlatList, StyleSheet } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import Search from '../Components/Search'
-import { FlatList, View, Text, Button } from 'react-native-web'
-import allProducts from '../Data/products.json'
 import ProductItem from '../Components/ProductItem'
-import { useState } from 'react'
 import { color } from '../Global/colors'
+import { useSelector } from 'react-redux'
 
 
-
-const ItemListCategories = ({navigation, route }) => {
-  const {category} = route.params
-
+const ItemListCategories = ({ navigation, route }) => {
+  const productsFilteredByCategory = useSelector(state => state.shop.value.productsFilteredByCategory)
   const [keyword, setKeyword] = useState("")
-  const [products, setProducts] = useState(allProducts)
+  const [products, setProducts] = useState(productsFilteredByCategory)
 
   useEffect(() => {
-    if (category) {
-      const productsCategory = allProducts.filter(product => product.category === category)
-      const productsFiltered = productsCategory.filter(product => product.title.includes(keyword))
-      setProducts(productsFiltered)
-    } else {
-      const productsFiltered = allProducts.filter(product => product.title.includes(keyword))
-      setProducts(productsFiltered)
-    }
 
-  }, [keyword])
+    const productsFiltered = productsFilteredByCategory.filter(product => product.title.includes(keyword))
+    setProducts(productsFiltered)
+
+
+  }, [keyword, productsFilteredByCategory])
 
   return (
     <>
       <Search setKeyword={setKeyword} />
-
       <FlatList
         style={styles.container}
         data={products}
         keyExtractor={item => item.id}
-        renderItem={({ item }) => <ProductItem item={item} navigation={navigation} route={route}/>}
+        renderItem={({ item }) => <ProductItem item={item} navigation={navigation} route={route} />}
       />
     </>
   )
@@ -48,8 +38,8 @@ const styles = StyleSheet.create({
   container: {
     width: "100%"
   },
-  goBack:{
-    with:'100%',
+  goBack: {
+    with: '100%',
     backgroundColor: color.beige,
     padding: 10,
     margin: 20,

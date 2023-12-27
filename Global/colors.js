@@ -6,5 +6,8 @@ export const color = {
     beige: '#b5a08a',
     azulmajorelle: '#ff7f50',
     carbon:"#f6e9d3",
-    negro:'#18171c'
+    negro:'#18171c',
+    moradoperlado: "#6c6874",
+    blanco: "#fafbfd",
+    marron: "#976655"
 }

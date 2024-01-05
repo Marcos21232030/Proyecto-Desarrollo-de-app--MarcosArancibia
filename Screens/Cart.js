@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Text, StyleSheet, View, Pressable } from 'react-native';
-import { FlatList } from 'react-native-web';
+import { FlatList } from 'react-native';
 import allCart from '../Data/cart.json';
 import CartItem from '../Components/CartItem';
 import { color } from '../Global/colors';

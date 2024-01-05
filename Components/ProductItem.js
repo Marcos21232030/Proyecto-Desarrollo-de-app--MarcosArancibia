@@ -12,7 +12,7 @@ const ProductItem = ({ item, navigation, route }) => {
   return (
     <Pressable style={styles.container} onPress={() => {
       dispatch(setProductSelected(item.id))
-      navigation.navigate("Product", { id: item.id })
+      navigation.navigate("ItemDetail", { id: item.id })
     }} >
       <Text style={width > 350 ? styles.text : styles.textMin}>{item.title}</Text>
       <Image

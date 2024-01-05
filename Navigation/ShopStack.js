@@ -1,5 +1,3 @@
-import { Text, StyleSheet, View } from 'react-native'
-
 import Home from '../Screens/Home'
 import ItemListCategories from '../Screens/ItemListCategories';
 import ItemDetail from '../Screens/ItemDetail'
@@ -31,5 +29,3 @@ const ShopStack = () => {
     }
 
 export default ShopStack;
-
-

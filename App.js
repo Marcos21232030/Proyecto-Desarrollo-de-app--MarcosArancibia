@@ -1,4 +1,4 @@
-import { StatusBar } from 'react-native-web';
+import { StatusBar } from 'react-native';
 import { color } from './Global/colors';
 import { useFonts } from "expo-font"
 import TabNavigator from './Navigation/TabNavigator';
@@ -31,4 +31,3 @@ const App = () => {
 }
 
 export default App;
-

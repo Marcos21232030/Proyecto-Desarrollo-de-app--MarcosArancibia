@@ -1,43 +1,34 @@
-import React, { useEffect, useState } from 'react';
 import { Text, StyleSheet, View, Pressable } from 'react-native';
 import { FlatList } from 'react-native';
-import allCart from '../Data/cart.json';
 import CartItem from '../Components/CartItem';
 import { color } from '../Global/colors';
+import { useSelector } from 'react-redux'
+import { usePostOrdersMutation } from '../App/services/shopServices';
 
 
 const Cart = () => {
-  const [cart, setCart] = useState([]);
-  const [total, setTotal] = useState(0);
 
-  useEffect(() => {
-    setCart(allCart);
-  }, []);
-
-  useEffect(() => {
-    const newTotal = cart.reduce((acc, product) => acc + product.price * product.quantity, 0);
-    setTotal(newTotal);
-  }, [cart]);
-
+  const cart = useSelector(state => state.cart.value)
+  const [triggerPostOrder] = usePostOrdersMutation()
   return (
     <View style={styles.container}>
-      <FlatList
-        data={cart}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <CartItem item={item} />}
-      />
-      <View style={styles.confirmContainer}>
-        <Pressable>
-          <Text style={styles.text}>Confirmar</Text>
-        </Pressable>
-        <Text style={styles.text}>Total: $ {total}</Text>
-      </View>
+        <FlatList
+            data={cart.items}
+            keyExtractor={item => item.id}
+            renderItem={({item})=> <CartItem item={item}/>}
+        />
+        <View style={styles.confirmContainer}>
+            <Pressable onPress={()=> triggerPostOrder(cart)}>
+                <Text style={styles.text}>Confirmar</Text>
+            </Pressable>
+            <Text style={styles.text}>Total: $ {cart.total} </Text>
+        </View>
     </View>
-  );
-};
+   
+  )
+}
 
-export default Cart;
-
+export default Cart
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -52,5 +43,10 @@ const styles = StyleSheet.create({
   },
   text: {
     color: color.blanco,
+    margin: 15,
   },
+  boton:{
+    backgroundColor: color.beige,
+    borderRadius: 10
+  }
 });

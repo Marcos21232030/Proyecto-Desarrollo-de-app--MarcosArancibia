@@ -1,0 +1,1 @@
+export const base_url = "https://bakerapp2-d23f5-default-rtdb.firebaseio.com/"

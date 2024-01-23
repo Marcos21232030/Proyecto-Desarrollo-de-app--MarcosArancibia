@@ -1,9 +1,9 @@
 import { StatusBar } from 'react-native';
-import { color } from './Global/colors';
 import { useFonts } from "expo-font"
-import TabNavigator from './Navigation/TabNavigator';
 import { Provider } from 'react-redux'
 import { store } from './App/store';
+import MainNavigator from './Navigation/MainNavigator'
+
 
 
 
@@ -21,9 +21,9 @@ const App = () => {
 
   return (
     <>
-      <StatusBar backgroundColor={color.carbon} />
+      <StatusBar backgroundColor={colors.green1}/>
       <Provider store={store}>
-        <TabNavigator />
+        <MainNavigator/>
       </Provider>
 
     </>

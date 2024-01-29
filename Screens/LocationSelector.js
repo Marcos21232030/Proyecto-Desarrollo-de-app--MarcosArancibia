@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react'
 import AddButton from '../Components/AddButton'
 import * as Location from 'expo-location'
 import MapPreview from '../Components/MapPreview'
-import { googleApi } from '../firebase/googleApi'
-import {usePostUserLocationMutation } from '../app/services/shopServices'
+import { googleApi } from '../Firebase/googleApi'
+import {usePostUserLocationMutation } from '../App/Services/shopServices'
 import { useSelector } from 'react-redux'
 
 const LocationSelector = ({navigation}) => {

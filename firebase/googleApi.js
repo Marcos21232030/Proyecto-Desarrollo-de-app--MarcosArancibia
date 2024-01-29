@@ -1,3 +1,3 @@
 export const googleApi = {
-    mapStatic:""
+    mapStatic:"AIzaSyCkGfLLVSIuVSCPt46sdtkAd1YtFhqlO4c"
 }

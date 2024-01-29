@@ -1,39 +1,41 @@
-import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
-import { color } from '../Global/colors';
-import { useSelector, useDispatch } from 'react-redux';
-import { addItem } from '../Features/Shop/cart/cartSlice';
+import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { color } from '../Global/colors'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { addItem } from "../Features/shop/cart/cartSlice"
 
-const ItemDetail = ({route}) => {
+const ItemDetail = ({ route }) => {
     const dispatch = useDispatch()
-    const product = useSelector((state)=> state.shop.value.productSelected)
+    const product = useSelector((state) => state.shop.value.productSelected)
     const images = product.images ? product.images : []
-  
-  
-  
+
+
+
     return (
-      <View style={styles.container}>
-        <View style={styles.content} >
-            <Image
-              style={styles.image}
-              source={{uri:images[2]}}
-              resizeMode='cover'
-            />
-            <View style={styles.containerText}>
-              <Text style={styles.title}>{product.title}</Text>
-              <Text>{product.description}</Text>
+        <View style={styles.container}>
+            <View style={styles.content} >
+                <Image
+                    style={styles.image}
+                    source={{ uri: images[2] }}
+                    resizeMode='cover' s
+                />
+                <View style={styles.containerText}>
+                    <Text style={styles.title}>{product.title}</Text>
+                    <Text>{product.description}</Text>
+                </View>
+                <View style={styles.containerPrice}>
+                    <Text style={styles.price}>$ {product.price}</Text>
+                    <Pressable style={styles.buyNow} onPress={() => dispatch(addItem(product))}>
+                        <Text style={styles.buyNowText}>Añadir al carrito</Text>
+                    </Pressable>
+                </View>
             </View>
-            <View style={styles.containerPrice}>
-              <Text style={styles.price}>$ {product.price}</Text>
-              <Pressable style={styles.buyNow} onPress={()=> dispatch(addItem(product)) }>
-                <Text style={styles.buyNowText}>Carrito</Text>
-              </Pressable>
-            </View>
-          </View>
-      </View>
+        </View>
     )
-  }
-  
-  export default ItemDetail
+}
+
+export default ItemDetail
 
 const styles = StyleSheet.create({
     container: {
@@ -43,24 +45,24 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     content: {
-        width: "100%",
+        width: "100%"
     },
     contentLandscape: {
         flexDirection: "row",
         alignItems: "center",
         gap: 15,
-        marginVertical: 15,
+        marginVertical: 15
     },
     image: {
         width: "100%",
-        height: 300,
+        height: 300
     },
     imageLandscape: {
         width: 200,
-        height: 200,
+        height: 200
     },
     goBack: {
-        width: '100%',
+        with: '100%',
         backgroundColor: color.beige,
         padding: 10,
         margin: 20,
@@ -69,26 +71,26 @@ const styles = StyleSheet.create({
     },
     containerTextLandscape: {
         width: "30%",
-        flexDirection: "column",
+        flexDirection: "column"
     },
     containerText: {
         gap: 25,
         paddingHorizontal: 5,
-        paddingVertical: 25,
+        paddingVertical: 25
     },
     containerPriceLandscape: {
         width: "30%",
-        flexDirection: "column",
+        flexDirection: "column"
     },
     containerPrice: {
         width: "100%",
         flexDirection: "row",
         justifyContent: "space-around",
         alignItems: "center",
-        marginVertical: 10,
+        marginVertical: 10
     },
     buyNow: {
-        width: '100%',
+        with: '100%',
         backgroundColor: color.azulmajorelle,
         padding: 10,
         margin: 20,
@@ -97,11 +99,11 @@ const styles = StyleSheet.create({
     },
     buyNowText: {
         color: "white",
-        fontSize: 15,
+        fontSize: 15
     },
     textbutton: {
         color: "white",
-        fontSize: 15,
+        fontSize: 15
     },
     title: {
         justifyContent: 'center',
@@ -111,11 +113,12 @@ const styles = StyleSheet.create({
     },
     description: {
         margin: 10,
-        fontFamily: "Raleway",
+        fontFamily: "Raleway"
     },
     price: {
         textAlign: "center",
         fontWeight: "bold",
         fontSize: 30,
-    },
+    }
+
 });

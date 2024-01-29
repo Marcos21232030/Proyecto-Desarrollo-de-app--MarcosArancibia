@@ -1,10 +1,9 @@
 import {useEffect, useState } from 'react'
 import { StyleSheet, Image, View } from 'react-native'
-import AddButton from '../Components/AddButton'
 import * as ImagePicker from 'expo-image-picker'
-import { usePostProfileImageMutation } from '../app/services/shopServices'
+import { useGetProfileImageQuery } from '../App/Services/shopServices'
 import { useSelector } from 'react-redux'
-import { useGetProfileImageQuery } from '../app/services/shopServices'
+import AddButton from '../Components/AddButton'
 
 
 const ImageSelector = ({navigation}) => {
@@ -46,7 +45,7 @@ const ImageSelector = ({navigation}) => {
   return (
     <View style={styles.container}>
        <Image
-            source={image ? { uri: image } : require("../../assets/user.png")}
+            source={image ? { uri: image } : require("../assets/user.png")}
             style={styles.image}
             resizeMode='cover'
 

@@ -1,6 +1,6 @@
 import Header from '../Components/Header';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Order from '../Screens/Order';
+import Order from '../Screens/Orders';
 
 const Stack = createNativeStackNavigator();
 const OrderStack = () => {

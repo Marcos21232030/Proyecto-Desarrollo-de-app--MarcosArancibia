@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View,TextInput } from 'react-native'
 import { color } from '../Global/colors'
 
-
 const InputForm = ({label,value, onChangeText,isSecure,error}) => {
 
 
@@ -38,12 +37,12 @@ const styles = StyleSheet.create({
         width:"90%",
         marginHorizontal:"5%",
         fontSize:16,
-        fontFamily:"Cinzel"
+        fontFamily:"Raleway"
       },
       error:{
         fontSize:16,
         color:"red",
-        fontFamily:"Cinzel",
+        fontFamily:"Raleway",
         fontStyle:"italic",
         marginLeft:20
       }

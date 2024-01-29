@@ -1,11 +1,11 @@
 import {useState ,useEffect} from 'react'
 import { View, Text ,StyleSheet, Pressable} from 'react-native'
-import { color } from '../Global/colors'
 import InputForm from '../Components/InputForm'
 import SubmitButton from '../Components/SubmitButton'
-import { useLoginMutation } from '../app/services/auth'
+import { useLoginMutation } from '../App/Services/auth'
 import { useDispatch } from 'react-redux'
-import { setUser } from '../features/auth/authSlice'
+import { setUser } from '../Features/authSlice'
+import { color } from '../Global/colors'
 
 
 
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     },
     container:{
       width:"90%",
-      backgroundColor:color.azul,
+      backgroundColor:color.beige,
       gap:15,
       borderRadius:10,
       justifyContent:"center",
@@ -78,11 +78,11 @@ const styles = StyleSheet.create({
     },
     sub:{
       fontSize:14,
-      fontFamily:"Cinzel"
+      fontFamily:"Raleway"
     },
     subLink:{
       fontSize:14,
-      fontFamily:"Cinzel",
+      fontFamily:"Raleway",
       color:"blue"
     }
 })

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, Pressable } from 'react-native'
+import { StyleSheet, Text, View,Pressable } from 'react-native'
 import { color } from '../Global/colors'
 
 

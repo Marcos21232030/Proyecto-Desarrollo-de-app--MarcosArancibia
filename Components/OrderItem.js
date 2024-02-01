@@ -38,12 +38,12 @@ const styles = StyleSheet.create({
     text1:{
         fontSize:19,
         fontWeight:"bold",
-        fontFamily:"Josefin",
+        fontFamily:"Cinzel",
         color: color.carbon
     },
     text2:{
         fontSize:17,
-        fontFamily:"Josefin",
+        fontFamily:"Cinzel",
         marginTop: 10
     }
 })

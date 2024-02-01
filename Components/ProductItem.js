@@ -2,7 +2,7 @@ import { StyleSheet, Text, Image, Pressable } from 'react-native'
 import { color } from '../Global/colors'
 import { useWindowDimensions } from 'react-native'
 import { useDispatch } from 'react-redux'
-import { setProductSelected } from '../Features/Shop/shopSlice'
+import { setProductSelected } from '../Features/shop/shopSlice'
 
 
 const ProductItem = ({ item, navigation, route }) => {
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     color: 'white',
     width: '70%',
     textAlign: 'center',
-    fontSize: '20'
+    fontSize: 20
   },
   textMin: {
     width: '70%',

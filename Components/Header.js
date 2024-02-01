@@ -1,30 +1,29 @@
-import { StyleSheet, Text, View ,useWindowDimensions } from 'react-native'
-import { useEffect, useState } from 'react'
+import { StyleSheet, Text, View, Pressable } from 'react-native'
 import { color } from '../Global/colors'
-
+import {MaterialIcons} from "@expo/vector-icons";
+import { deleteAllSession } from '../database/index'
+import { useSelector,useDispatch } from 'react-redux'
+import { clearUser } from '../Features/authSlice'
 
 const Header = ({title = "Producto"}) => {
-  const {width,height} = useWindowDimensions()
-  const [landscape , setLandscape] = useState(false)
-
-  useEffect(()=>{
-    if(width > height){
-      setLandscape(true)
-    }else{
-      setLandscape(false)
-    }
-  },[width,height])
-
-
+  const dispatch = useDispatch()
+  const localId = useSelector(state => state.auth.value.localId)
+  const onLogout = () =>{
+    deleteAllSession().then(result => console.log(result))
+    dispatch(clearUser())
+  }
   return (
-    <View style={landscape ? styles.containerLandscape : styles.container}>
+    <View style={styles.container}>
       <Text style={styles.text}>{title}</Text>
+      {localId && <Pressable onPress={onLogout} style={styles.logoutIcon}>
+                      <MaterialIcons name='logout' size={30} color="black"/>
+                  </Pressable>
+      }
     </View>
   )
 }
 
 export default Header
-
 const styles = StyleSheet.create({
     container:{
       backgroundColor:color.carbon,

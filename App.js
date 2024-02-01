@@ -1,13 +1,14 @@
 import { StatusBar } from 'react-native';
 import { color } from './Global/colors';
 import { useFonts } from "expo-font"
-import TabNavigator from './Navigation/TabNavigator';
 import { Provider } from 'react-redux'
 import { store } from './App/store';
 import MainNavigator from './Navigation/MainNavigator';
+import { init } from './database/index'
 
-
-
+init()
+.then(() => console.log("DB Initialized"))
+.catch(err => console.log(err))
 
 
 const App = () => {

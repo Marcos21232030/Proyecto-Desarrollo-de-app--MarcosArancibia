@@ -1,14 +1,20 @@
-import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
+import { StyleSheet, Text, View, Image, Pressable, Alert } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { color } from '../Global/colors'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { addItem } from "../Features/shop/cart/cartSlice"
 
-const ItemDetail = ({ route }) => {
+const ItemDetail = ({ navigation, route }) => {
     const dispatch = useDispatch()
     const product = useSelector((state) => state.shop.value.productSelected)
     const images = product.images ? product.images : []
+
+    const addCartProduct = () => {
+        dispatch(addItem(product))
+        Alert.alert("Se agrego correctamente")
+        navigation.navigate("CartStack")
+    }
 
 
 
@@ -26,7 +32,7 @@ const ItemDetail = ({ route }) => {
                 </View>
                 <View style={styles.containerPrice}>
                     <Text style={styles.price}>$ {product.price}</Text>
-                    <Pressable style={styles.buyNow} onPress={() => dispatch(addItem(product))}>
+                    <Pressable style={styles.buyNow} onPress={ addCartProduct}>
                         <Text style={styles.buyNowText}>Añadir al carrito</Text>
                     </Pressable>
                 </View>

@@ -9,7 +9,7 @@ const OrderItem = ({order}) => {
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
-            <Text style={styles.text1}>{new Date(order.CreatedAt).toLocaleString()}</Text>
+      <Text style={styles.text1}>{order.updateAt}</Text>
             <Text style={styles.text2}>Total: $ {total}</Text>
       </View>
       <Ionicons name="search-outline" size={25} color="white"/>

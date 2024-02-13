@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     content: {
-        width: "100%"
+        width: "100%",
     },
     contentLandscape: {
         flexDirection: "row",
@@ -58,8 +58,8 @@ const styles = StyleSheet.create({
         height: 300
     },
     imageLandscape: {
-        width: 200,
-        height: 200
+        width: 150,
+        height: 150
     },
     goBack: {
         with: '100%',

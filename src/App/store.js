@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
-import shopReducer from "../Features/shop/shopSlice"
+import shopReducer from "../Features/shop/cart/shopSlice"
 import { shopApi } from './Services/shopServices'
 import { authApi } from './Services/auth'
 import cartReducer from "../Features/shop/cart/cartSlice"

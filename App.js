@@ -1,10 +1,10 @@
 import { StatusBar } from 'react-native';
-import { color } from './Global/colors';
 import { useFonts } from "expo-font"
 import { Provider } from 'react-redux'
-import { store } from './App/store';
-import MainNavigator from './Navigation/MainNavigator';
-import { init } from './database/index'
+import { store } from './src/App/store';
+import MainNavigator from './src/Navigation/MainNavigator';
+import { init } from './src/database/index'
+import { color } from './src/Global/colors';
 
 init()
 .then(() => console.log("DB Initialized"))

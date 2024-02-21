@@ -2,7 +2,7 @@ import { StyleSheet, Text, Image, Pressable } from 'react-native'
 import { color } from '../Global/colors'
 import { useWindowDimensions } from 'react-native'
 import { useDispatch } from 'react-redux'
-import { setProductSelected } from '../Features/shop/shopSlice'
+import { setProductSelected } from '../Features/shop/cart/shopSlice'
 
 
 const ProductItem = ({ item, navigation, route }) => {

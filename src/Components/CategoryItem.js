@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, Text } from 'react-native'
 import CardShadow from '../Wrappers/CardShadow'
 import { useDispatch } from 'react-redux'
-import { setProductsFilteredByCategory } from "../Features/shop/shopSlice"
+import { setProductsFilteredByCategory } from "../Features/shop/cart/shopSlice"
 import { color } from '../Global/colors'
 
 const CategoryItem = ({ category, navigation, route }) => {

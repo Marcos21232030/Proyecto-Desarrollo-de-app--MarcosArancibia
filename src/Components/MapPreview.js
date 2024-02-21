@@ -12,7 +12,7 @@ const MapPreview = ({latitude,longitude}) => {
     &key=${googleApi.mapStatic}`
 
   return (
-    <Image source={latitude ? {uri:mapPreviewUrl} : require("../assets/map.jpg")} style={styles.image}/>
+    <Image source={latitude ? {uri:mapPreviewUrl} : require("../../assets/map.jpg")} style={styles.image}/>
   )
 }
 
